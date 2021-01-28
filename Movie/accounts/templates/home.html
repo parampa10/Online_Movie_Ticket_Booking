@@ -1,0 +1,28 @@
+{% load static%}
+<html>
+    <head>
+        <title>Welcome new user sign up here</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body bgcolor="cyan">
+        <br>
+        <h1><u>MOVIES LIST </u></h1>
+        <h3 align="right">
+            <form action="/accounts/logout/" method="POST">
+            {% csrf_token%}    <input type="submit" name="logout" value="LOGOUT"></form> </h3>
+        <center>   
+        {% for m in movies %}
+            {% if m.movieimg %}
+                <br>
+                <img src="{{m.image_url|default_if_none:'#' }}" width="500" height="500"/>
+                <p>{{m.moviename}}</p><br>
+                <form action="/booking/booknow/" method="POST">
+                 {% csrf_token%}     <input type="submit" name="{{m.moviename}}" value="booknow"/>
+                    {% comment %} <input type="submit" name="{{m.moviename}}" value="BOOK NOW"> {% endcomment %}
+                </form> 
+            {% endif %}
+        {% endfor %} 
+        </center>
+    </body>
+</html> 

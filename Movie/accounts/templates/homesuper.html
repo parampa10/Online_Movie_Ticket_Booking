@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Welcome new user sign up here</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body bgcolor="cyan">
+        <br>
+        <h1><u>MOVIES LIST</u></h1>
+        <h3 align="right">
+        <form action="/movieupdate/addmovie/" method="POST">
+            <input type="submit" value="ADD MOVIE"/>
+            </form>
+            <form action="/accounts/logout/" method="POST">
+            {% csrf_token%}    <input type="submit" name="logout" value="LOGOUT">
+            </form> </h3>
+        
+        <center>
+        {% for m in movies %}
+            {% if m.movieimg %}
+                <br>
+                <img src="{{m.image_url|default_if_none:'#' }}" width="500" height="500"/>
+                <p>{{m.moviename}}</p>
+                <form action="/movieupdate/deletemovie/" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="movie_name" value="{{m.moviename}}"/>
+                <input type="submit"  value="delete"/>
+                </form>
+                <br>
+            {% endif%}
+        {% endfor %}
+        {% if msg%}
+            {{msg}}
+        {% endif%}
+        </center>
+    </body>
+</html>
+ 

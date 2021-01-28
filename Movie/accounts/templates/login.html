@@ -1,0 +1,34 @@
+ <html>
+<head>        
+    <title>Online Movie Ticket</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body bgcolor="cyan">            
+    <center>
+        <form action="/accounts/auth/" method="POST">
+            {% csrf_token %}
+            <u><h1>MOVIE TICKET</h1></u>
+            <br><br><br>
+            Name : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="Enter Name" name="username" required>
+            <br> <br>
+            Password : <input type="password" placeholder="Enter Password" name="password" required> 
+            <br> <br>
+
+            <input type="submit" value="Submit">
+            
+            <br>
+            
+        </form>
+        <form action="/accounts/signup/">{% csrf_token %} <input type=submit name=newuser value="New user?"/></form>
+       
+        <form action="{% url 'password_reset' %}">   
+            <input type="submit" value="Forgot Your Password?">
+        </form>
+
+        {% if msg%}
+            {{msg}}
+        {% endif%}
+    </center>
+</body>
+</html>

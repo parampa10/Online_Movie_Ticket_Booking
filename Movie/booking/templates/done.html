@@ -1,0 +1,42 @@
+<html>
+<head></head>
+<body bgcolor="cyan">
+    <center><h1>
+    {% if done%}
+        movie name:{{movie}}<br>
+        date:{{date}}/{{month}}/{{year}}<br>
+        time:{{time}} hours<br>
+        price:{{price}}<br>
+        seats:
+        {% comment %} {% for r in row%}
+            row:{{r}}
+        {% endfor%}<br>
+        {% for c in column%}
+            column:{{c}}
+        {% endfor%} {% endcomment %}
+
+        {% for r in row%}
+            {% with indexr=forloop.counter %}
+            row:{{r}}
+            {% for c in column%}
+                {% with indexc=forloop.counter%}
+                {% if indexc == indexr %}
+                   
+                    column:{{c}}<br>
+                {% endif%}  
+            {% endwith %}
+            {% endfor%}
+        {% endwith%}
+        {% endfor%}
+
+
+
+
+
+        {{done}}
+    {% else %}
+        {{notdone}}
+    {% endif %}</h1>
+</center>
+</body>
+</html>

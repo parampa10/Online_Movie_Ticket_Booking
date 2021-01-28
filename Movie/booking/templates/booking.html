@@ -1,0 +1,25 @@
+<html>
+<head></head>
+<body bgcolor="cyan">
+     <form method="POST" action="/booking/timecheck/">
+     {% csrf_token%}
+    {% if selection%}
+        {{selection}}
+    {% endif%}<br>
+    select booking date:<br>
+    
+    <input type="hidden" name="movie" value="{{selection}}">
+    <input type="radio" name="date" checked="checked" value="{{date}}"/>{{date}}/{{month}}/{{year}}<br>
+    <input type="radio" name="date" value="{{date1}}"/>{{date1}}/{{month}}/{{year}}<br>
+    <input type="radio" name="date" value="{{date2}}"/>{{date2}}/{{month}}/{{year}}<br>
+    <input type="radio" name="date" value="{{date3}}"/>{{date3}}/{{month}}/{{year}}<br>
+    select booking time:<br>
+    {% for i in slot %}
+        <input type="radio" name="time" value="{{i}}"/>{{i}} hours<br>
+    {% endfor %}
+
+    <input type="submit" value="booknow"/>
+    </form>
+
+</body>
+</html>

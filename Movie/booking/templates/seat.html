@@ -1,0 +1,42 @@
+<html>
+<head>
+    
+</head>
+<body bgcolor="cyan">
+    <center>
+    <img>
+    <h1>
+    select seat :<br>
+    enter one seat at a time...<br>
+    RED seat's price are 200 RUPESS<br>
+    BLACK seat's price are 150 RUPESS<br>
+    <form action="/booking/seat/" method="POST">
+     {% csrf_token%}
+        
+        <input type="hidden" name="movie" value="{{movie}}"/>
+        <input type="hidden" name="date" value="{{date}}"/><br>
+        <input type="hidden" name="time" value="{{time}}"/>
+        ROW:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="row"/><br>
+        COLUMN: <input type="text" name="column"/><br>
+        {% if msg%}
+            {{msg}}
+        {% endif%}
+        {% if done%}
+            {{done}}
+        {% endif%}
+        
+        <br>
+        <input type="submit" name="submit" value="BOOK ANOTHER TICKET"><br>
+    </form>
+    <form action="/booking/show_ticket/" method="POST">
+     {% csrf_token%}
+        <input type="hidden" name="moviename" value="{{movie}}"/>
+        <input type="hidden" name="date" value="{{date}}"/>
+        <input type="hidden" name="time" value="{{time}}"/>
+        <input type="submit" name="submit" value="Done">
+    </form>
+    LAYOUT :<br>
+    <img src="/media/images/seatlayout.png" width="600"/>
+   </h1> </center>
+</body>
+</html>

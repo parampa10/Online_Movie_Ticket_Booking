@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Welcome new user sign up here</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body bgcolor="cyan">
+    {%block content%}
+        <br><br><br><br><br><br><br><br><br>
+        <center>
+        <h1><u>Hello new user!</u></h1>
+        <form action="/accounts/signup/" method="POST">
+        {%csrf_token%}
+            <table border="1" bgcolor="#33FF92" >
+                <tr>
+                    <td align="center" >Sign up</td>
+                </tr>
+                <tr>
+                    <td>       
+                        Username:&nbsp;<input type="text" name="username"/><br><br>
+                        Password:&nbsp;&nbsp;<input type="password" name="password1" /><br><br>
+                        Re-enter Password:&nbsp;&nbsp;<input type="password" name="password2" /><br><br>
+                        Email ID:&nbsp;&nbsp;<input type="text" name="email"/><br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="submit" name="submit"/>
+                        <br>
+                        {% if pwdmsg %}
+                            {{ pwdmsg }}
+                        {% endif %}
+                        <br>
+                        {% if phmsg %}
+                            {{ phmsg }}
+                        {% endif %}
+                    </td>
+                </tr>
+            </table>
+        </form>
+        </center>
+        {%endblock%}
+    </body>
+</html>
+
+
+
+
